@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.8.22"
     application
 }
 
@@ -31,12 +31,12 @@ subprojects {
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_19.majorVersion
     }
 }
 
