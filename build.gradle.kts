@@ -5,28 +5,39 @@ plugins {
     application
 }
 
-group = "com.cosmoloj.kt"
-version = "1.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
+subprojects {
 
-tasks.test {
-    useJUnitPlatform()
-}
+    apply {
+        plugin("org.jetbrains.kotlin.jvm")
+    }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
+    repositories {
+        mavenCentral()
+    }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
+    group = "com.cosmoloj.kt"
+    version = "1.0-SNAPSHOT"
+
+    dependencies {
+        testImplementation(kotlin("test"))
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+    }
 }
 
 application {
