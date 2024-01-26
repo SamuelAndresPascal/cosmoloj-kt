@@ -16,6 +16,12 @@ fun main() {
     // un élément qui n'est pas du type générique Int !
     (list as MutableList<Any>).add(0.2)
 
+    // Noter que le compilateur ne dit rien sur un cas correct car du point de vue du type on a bien
+    // MutableList<Int> <: Collection<Int>
+    // En revanche MutableList<Int> ne spécialise pas MutableList<Any> qui sont deux types sans relation hiérarchique
+    // dont le seul point commun est d'être représenté de manière identique à l'exécution
+    print((list as Collection<Int>).size)
+
 
     println(list)
     println(list[0])
