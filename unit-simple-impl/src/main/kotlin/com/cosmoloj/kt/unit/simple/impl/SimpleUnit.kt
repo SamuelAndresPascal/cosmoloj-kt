@@ -5,8 +5,8 @@ import com.cosmoloj.kt.unit.simple.api.Factor
 import com.cosmoloj.kt.unit.simple.api.TransformedUnit
 
 abstract class SimpleUnit : AbstractUnit {
-    override fun shift(target: Double): TransformedUnit =
-        SimpleTransformedUnit.of(SimpleUnitConverter.translation(target), this)
+    override fun shift(value: Double): TransformedUnit =
+        SimpleTransformedUnit.of(SimpleUnitConverter.translation(value), this)
 
     override fun scaleMultiply(value: Double): TransformedUnit =
         SimpleTransformedUnit.of(SimpleUnitConverter.linear(value), this)

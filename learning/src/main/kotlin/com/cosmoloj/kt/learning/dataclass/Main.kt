@@ -1,9 +1,7 @@
 package com.cosmoloj.kt.learning.dataclass
 
 
-data class Mutable(var id: Int)
-
-data class Immutable(val id: Int)
+private data class Mutable(var id: Int)
 
 /**
  * Illustration que la modification de l'état d'un objet mutable empêche dans le cas général de le retrouver dans les

@@ -1,5 +1,6 @@
 package com.cosmoloj.kt.learning.array
 
+private const val SIZE: Int = 10000
 
 /**
  * Principe de programmation : prendre garde à l'organisation de la mémoire dans le parcours des tableaux
@@ -18,13 +19,12 @@ package com.cosmoloj.kt.learning.array
  */
 fun main() {
 
-    val size = 10000
-    val array = Array(size) { DoubleArray(size) }
+    val array = Array(SIZE) { DoubleArray(SIZE) }
 
     // les indices doivent être parcourus dans des boucles imbriquées dans l'ordre des dimensions (contraire du C)
     var start = System.currentTimeMillis()
-    for (i in 0 ..<size) {
-        for (j in 0 ..<size) {
+    for (i in 0 ..<SIZE) {
+        for (j in 0 ..<SIZE) {
             array[i][j]++
         }
     }
@@ -32,8 +32,8 @@ fun main() {
 
     // sinon le temps de parcours s'allonge de manière très importante
     start = System.currentTimeMillis()
-    for (i in 0..<size) {
-        for (j in 0 ..<size) {
+    for (i in 0..<SIZE) {
+        for (j in 0 ..<SIZE) {
             array[j][i]++
         }
     }
