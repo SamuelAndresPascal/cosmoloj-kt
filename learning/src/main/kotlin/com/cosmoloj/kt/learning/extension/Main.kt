@@ -10,7 +10,7 @@ package com.cosmoloj.kt.learning.extension
  */
 fun main() {
 
-    val threshold : Int = 1000000
+    val threshold : Int = 100000
     val listToAdd = listOf(1)
 
     // CORRECT : en passant par une liste mutable : pattern builder
