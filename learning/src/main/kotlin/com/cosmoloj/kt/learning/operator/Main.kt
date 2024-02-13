@@ -1,6 +1,5 @@
 package com.cosmoloj.kt.learning.operator
 
-private const val DOUBLE_TO_ADD: Double = 0.2
 
 /**
  * Illustration des coupes-circuits sur les opérateurs logiques
