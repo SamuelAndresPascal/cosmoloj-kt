@@ -9,4 +9,8 @@ interface Factor {
     fun denominator(): Int
 
     fun power(): Double = if (denominator() == 1) numerator().toDouble() else numerator().toDouble() / denominator()
+
+    operator fun times(value: Any): AbstractUnit
+
+    operator fun div(value: Any): AbstractUnit
 }

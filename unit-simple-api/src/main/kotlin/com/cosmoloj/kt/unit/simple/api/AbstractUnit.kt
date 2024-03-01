@@ -24,9 +24,15 @@ interface AbstractUnit : Factor {
 
     operator fun minus(value: Double): TransformedUnit = shift(-value)
 
-    operator fun times(value: Double): TransformedUnit = scaleMultiply(value)
+    override operator fun times(value: Any): AbstractUnit
 
-    operator fun div(value: Double): TransformedUnit = scaleDivide(value)
+    override operator fun div(value: Any): AbstractUnit
 
-    operator fun rem(value: Int): Factor = factor(value)
+    operator fun rem(value: Int): AbstractUnit
+
+    operator fun rangeTo(unit: AbstractUnit): UnitConverter = getConverterTo(unit)
+
+    operator fun rangeUntil(unit: AbstractUnit): UnitConverter = unit.getConverterTo(this)
+
+    operator fun not(): AbstractUnit = rem(-1)
 }
