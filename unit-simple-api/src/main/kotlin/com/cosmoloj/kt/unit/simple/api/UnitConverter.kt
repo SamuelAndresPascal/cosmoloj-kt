@@ -15,4 +15,6 @@ interface UnitConverter {
     fun convert(value: Double): Double
 
     fun concatenate(unitConverter: UnitConverter): UnitConverter
+
+    operator fun not(): UnitConverter = inverse()
 }

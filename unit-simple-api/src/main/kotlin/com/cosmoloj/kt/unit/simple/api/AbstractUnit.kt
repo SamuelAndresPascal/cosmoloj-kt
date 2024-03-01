@@ -19,4 +19,14 @@ interface AbstractUnit : Factor {
     fun scaleDivide(value: Double): TransformedUnit
 
     fun factor(numerator: Int, denominator: Int = 1): Factor
+
+    operator fun plus(value: Double) : TransformedUnit = shift(value)
+
+    operator fun minus(value: Double): TransformedUnit = shift(-value)
+
+    operator fun times(value: Double): TransformedUnit = scaleMultiply(value)
+
+    operator fun div(value: Double): TransformedUnit = scaleDivide(value)
+
+    operator fun rem(value: Int): Factor = factor(value)
 }
