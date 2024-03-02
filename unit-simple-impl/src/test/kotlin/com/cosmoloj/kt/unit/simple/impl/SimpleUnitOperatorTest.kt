@@ -40,7 +40,7 @@ class SimpleUnitOperatorTest {
         val ton: AbstractUnit = kg * 1000.0
         val gPerM2: AbstractUnit = g / (m%2)
         val km: AbstractUnit = m * 1000.0
-        val tonPerKm2: AbstractUnit = ton / (km%2)
+        val tonPerKm2: AbstractUnit = ton * (!km%2)
         val cm: AbstractUnit = m / 100.0
         val tonPerCm2: AbstractUnit = ton / (cm%2)
         val gPerM2ToTonPerKm2: UnitConverter = gPerM2 .. tonPerKm2
@@ -79,7 +79,7 @@ class SimpleUnitOperatorTest {
         val s: AbstractUnit = SimpleFundamentalUnit()
         val h: AbstractUnit = s * 3600.0
         val ms: AbstractUnit = m / s
-        val kmh: AbstractUnit = km * !h
+        val kmh: AbstractUnit = km / h
         val msToKmh: UnitConverter = ms .. kmh
         Assertions.assertEquals(360.0, msToKmh.convert(100.0), 1e-10)
         Assertions.assertEquals(5.0, (!msToKmh).convert(18.0), 1e-10)
