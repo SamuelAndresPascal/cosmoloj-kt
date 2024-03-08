@@ -16,14 +16,15 @@ abstract class SimpleUnit : AbstractUnit {
     override fun factor(numerator: Int, denominator: Int): Factor = SimpleFactor.of(this, numerator)
 
     override operator fun rem(value: Int): AbstractUnit = SimpleDerivedUnit.of(factor(value))
+
     override operator fun times(value: Any): AbstractUnit =
-        if (value is Double)
-            scaleMultiply(value)
+        if (value is Number)
+            scaleMultiply(value.toDouble())
         else SimpleDerivedUnit.of(this, value as Factor)
 
     override operator fun div(value: Any): AbstractUnit =
-        if (value is Double)
-            scaleDivide(value)
+        if (value is Number)
+            scaleDivide(value.toDouble())
         else SimpleDerivedUnit.of(this, SimpleFactor.of(value as Factor, -1))
 
 }

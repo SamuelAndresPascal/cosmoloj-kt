@@ -13,8 +13,8 @@ class SimpleUnitOperatorTest {
     @Test
     fun transformedUnitConversion() {
         val m: AbstractUnit = SimpleFundamentalUnit()
-        val km: AbstractUnit = m * 1000.0
-        val cm: AbstractUnit = m / 100.0
+        val km: AbstractUnit = m * 1000
+        val cm: AbstractUnit = m / 100
         val cmToKm: UnitConverter = cm .. km
         Assertions.assertEquals(0.00003, cmToKm.convert(3.0), 1e-10)
         Assertions.assertEquals(3.0, (!cmToKm).convert(0.00003), 1e-10)

@@ -19,7 +19,7 @@ open class SimpleFactor private constructor(
 
     override operator fun times(value: Any): AbstractUnit = SimpleDerivedUnit.of(this, value as Factor)
     override operator fun div(value: Any): AbstractUnit
-    = SimpleDerivedUnit.of(this, SimpleFactor.of(dim=value as Factor, numerator=-1))
+    = SimpleDerivedUnit.of(this, of(dim=value as Factor, numerator=-1))
 
     companion object {
         fun of(dim: Factor, numerator: Int, denominator: Int = 1): Factor {
