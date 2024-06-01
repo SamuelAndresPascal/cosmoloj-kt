@@ -1,9 +1,10 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.22"
-    id("io.gitlab.arturbosch.detekt") version "1.23.4"
+    kotlin("jvm") version "2.0.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
     application
 }
 
@@ -34,12 +35,14 @@ subprojects {
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_22
+        targetCompatibility = JavaVersion.VERSION_22
     }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_21.majorVersion
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_22)
+        }
     }
 
     detekt {
@@ -50,6 +53,7 @@ subprojects {
     }
 
     tasks.withType<Detekt>().configureEach {
+        jvmTarget = JavaVersion.VERSION_21.toString()
         reports {
             html.required.set(true) // observe findings in your browser with structure and code snippets
             xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
